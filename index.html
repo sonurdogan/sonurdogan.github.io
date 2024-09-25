@@ -3,7 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
     <title>Onur Dogan</title>
 
     <meta name="author" content="Onur Dogan">
@@ -17,7 +16,7 @@
 <body id="body" style="background-color: #ffffff; color: #000000; transition: background-color 0.5s, color 0.5s;">
   <div style="position: absolute; top: 10px; right: 10px;">
     <button id="mode-toggle" style="padding: 10px 20px; cursor: pointer; border-radius: 25px; border: none; background-color: #d1cbcb; color: white; font-weight: bold; transition: background-color 0.3s;">
-        Change Theme
+        <i id="theme-icon" class="fa fa-sun-o"></i>
     </button>
 </div>
 
@@ -136,33 +135,39 @@
         </tr>
     </tbody>
 </table>
-
 <script>
-  const toggleButton = document.getElementById('mode-toggle');
-  const body = document.getElementById('body');
-
-  // Check the current mode in localStorage
-  const currentMode = localStorage.getItem('mode') || 'light';
-  if (currentMode === 'dark') {
-      body.style.backgroundColor = '#333333';
-      body.style.color = '#ffffff';
-      toggleButton.style.backgroundColor = '#6c757d'; // Dark mode button color
-  }
-
-  // Add event listener to the button
-  toggleButton.addEventListener('click', () => {
-      if (body.style.backgroundColor === 'rgb(255, 255, 255)') { // Light mode
-          body.style.backgroundColor = '#333333'; // Dark mode
-          body.style.color = '#ffffff';
-          toggleButton.style.backgroundColor = '#6c757d'; // Change button color for dark mode
-          localStorage.setItem('mode', 'dark');
-      } else {
-          body.style.backgroundColor = '#ffffff'; // Light mode
-          body.style.color = '#000000';
-          toggleButton.style.backgroundColor = '#d1cbcb'; // Change button color for light mode
-          localStorage.setItem('mode', 'light');
-      }
-  });
-</script>
-</body>
-</html>
+    const toggleButton = document.getElementById('mode-toggle');
+    const body = document.getElementById('body');
+    const themeIcon = document.getElementById('theme-icon');
+  
+    // Check the current mode in localStorage
+    const currentMode = localStorage.getItem('mode') || 'dark';
+    if (currentMode === 'dark') {
+        body.style.backgroundColor = '#333333';
+        body.style.color = '#ffffff';
+        toggleButton.style.backgroundColor = '#6c757d'; // Dark mode button color
+        themeIcon.classList.remove('fa-moon-o');
+        themeIcon.classList.add('fa-sun-o'); // Show moon icon for dark mode
+    }
+  
+    // Add event listener to the button
+    toggleButton.addEventListener('click', () => {
+        if (body.style.backgroundColor === 'rgb(255, 255, 255)') { // Light mode
+            body.style.backgroundColor = '#333333'; // Dark mode
+            body.style.color = '#ffffff';
+            toggleButton.style.backgroundColor = '#6c757d'; // Change button color for dark mode
+            themeIcon.classList.remove('fa-moon-o');
+            themeIcon.classList.add('fa-sun-o'); // Switch to moon icon
+            localStorage.setItem('mode', 'dark');
+        } else {
+            body.style.backgroundColor = '#ffffff'; // Light mode
+            body.style.color = '#000000';
+            toggleButton.style.backgroundColor = '#d1cbcb'; // Change button color for light mode
+            themeIcon.classList.remove('fa-sun-o');
+            themeIcon.classList.add('fa-moon-o'); // Switch to sun icon
+            localStorage.setItem('mode', 'light');
+        }
+    });
+  </script>
+  </body>
+  </html>
