@@ -55,7 +55,9 @@
                                 </p>
                             </td>
                             <td style="padding:2.5%;width:40%;max-width:40%">
-                                <a href="./imgs/profil.png"><img style="width:250px; height:250px; border-radius: 50%; object-fit: cover;"  alt="profile photo" src="./imgs/profil.jpg" class="hoverZoomLink"></a>
+                                <a href="./imgs/profil.png">
+                                    <img style="width:100%;max-width:100%;border-radius:15px;" alt="profile photo" src="./imgs/profil.jpg" class="hoverZoomLink">
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -143,7 +145,7 @@
     // Check the current mode in localStorage
     const currentMode = localStorage.getItem('mode') || 'dark';
     if (currentMode === 'dark') {
-        body.style.backgroundColor = '#1e2327';
+        body.style.backgroundColor = '#333333';
         body.style.color = '#ffffff';
         toggleButton.style.backgroundColor = '#6c757d'; // Dark mode button color
         themeIcon.classList.remove('fa-moon-o');
@@ -153,7 +155,7 @@
     // Add event listener to the button
     toggleButton.addEventListener('click', () => {
         if (body.style.backgroundColor === 'rgb(255, 255, 255)') { // Light mode
-            body.style.backgroundColor = '#1e2327'; // Dark mode
+            body.style.backgroundColor = '#333333'; // Dark mode
             body.style.color = '#ffffff';
             toggleButton.style.backgroundColor = '#6c757d'; // Change button color for dark mode
             themeIcon.classList.remove('fa-moon-o');
