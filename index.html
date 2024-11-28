@@ -58,6 +58,16 @@
                                 <a href="./imgs/profil.png">
                                     <img style="width:100%;max-width:100%;border-radius:15px;" alt="profile photo" src="./imgs/profil.jpg" class="hoverZoomLink">
                                 </a>
+                                <div style="margin-top:10px; text-align:center;">
+                                    <!-- Button to toggle map visibility -->
+                                    <button id="toggle-map-button" style="margin-top:10px; padding:5px 10px; border:none; border-radius:5px; background-color:#1f476b; color:white; cursor:pointer;">
+                                        See Visitor Map
+                                    </button>
+                                    <!-- ClustrMaps Container -->
+                                    <div id="clustrmaps-container" style="width:250px; height:150px; margin:10px auto; display:none; text-align:center;">
+                                        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=DfgW5ycPkFHU3r8g6KF4XW8WRRXwA4Hf-ymZWQj-PwY&cl=ffffff&w=a"></script>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -171,5 +181,19 @@
         }
     });
   </script>
+  <script>
+    const toggleMapButton = document.getElementById('toggle-map-button');
+    const clustrMapsContainer = document.getElementById('clustrmaps-container');
+
+    toggleMapButton.addEventListener('click', () => {
+        if (clustrMapsContainer.style.display === 'none') {
+            clustrMapsContainer.style.display = 'block';
+            toggleMapButton.textContent = 'Hide Map';
+        } else {
+            clustrMapsContainer.style.display = 'none';
+            toggleMapButton.textContent = 'See Visitors Map';
+        }
+    });
+</script>
   </body>
   </html>
